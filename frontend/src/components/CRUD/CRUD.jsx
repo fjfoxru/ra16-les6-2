@@ -12,10 +12,6 @@ class CRUD extends Component {
         this.getCards();
     }
 
-    // componentDidUpdate() {
-    // Как здесь использовать?
-    // }
-
     getCards = () => {
         fetch('http://localhost:7777/notes')
             .then(response => response.json())
@@ -35,8 +31,9 @@ class CRUD extends Component {
         fetch('http://localhost:7777/notes', {
             method: 'POST',
             body: JSON.stringify(body)
+        }).then(() => {
+            this.getCards()
         })
-        this.getCards()
     }
 
 
